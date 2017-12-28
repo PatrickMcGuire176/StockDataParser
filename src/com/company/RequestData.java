@@ -79,7 +79,8 @@ public class RequestData {
                         // System.out.println(driver.getPageSource());
                     }
                     try {
-                        revenue = driver.findElement(By.xpath("//*[@id=\"quote-leaf-comp\"]/div/section/div[2]/div[1]/div[2]/div[4]/table/tbody/tr[1]/td[2]")).getText();
+                        //revenue = driver.findElement(By.xpath("//*[@id=\"Col1-0-KeyStatistics-Proxy\"]/section/div[2]/div[1]/div[2]/div[4]/table/tbody/tr[1]/td[2]")).getText();
+                        revenue = driver.findElement(By.xpath("//*[@id=\"Col1-0-KeyStatistics-Proxy\"]/section/div[2]/div[1]/div[2]/div[4]/table/tbody/tr[1]/td[2]")).getText();
                         arrayOfStockData.add(revenue);
                         System.out.println("Revenue is " + revenue);
                     } catch (org.openqa.selenium.NoSuchElementException | StaleElementReferenceException e) {
@@ -90,7 +91,7 @@ public class RequestData {
                         //System.out.println(driver.getPageSource());
                     }
                     try {
-                        sharesOutstanding = driver.findElement(By.xpath("//*[@id=\"quote-leaf-comp\"]/div/section/div[2]/div[2]/div/div[2]/table/tbody/tr[3]/td[2]")).getText();
+                        sharesOutstanding = driver.findElement(By.xpath("//*[@id=\"Col1-0-KeyStatistics-Proxy\"]/section/div[2]/div[2]/div/div[2]/table/tbody/tr[3]/td[2]")).getText();
                         arrayOfStockData.add(sharesOutstanding);
                         System.out.println(sharesOutstanding);
                     } catch (org.openqa.selenium.NoSuchElementException | StaleElementReferenceException e) {
@@ -100,7 +101,7 @@ public class RequestData {
                         arrayOfStockData.add(sharesOutstanding);
                     }
                     try {
-                        trailingPE = driver.findElement(By.xpath("//*[@id=\"quote-leaf-comp\"]/div/section/div[2]/div[1]/div[1]/div/table/tbody/tr[3]/td[2]")).getText();
+                        trailingPE = driver.findElement(By.xpath("//*[@id=\"Col1-0-KeyStatistics-Proxy\"]/section/div[2]/div[1]/div[1]/div/table/tbody/tr[3]/td[2]")).getText();
                         arrayOfStockData.add(trailingPE);
                         System.out.println(trailingPE);
                     } catch (org.openqa.selenium.NoSuchElementException | StaleElementReferenceException e) {
@@ -110,7 +111,7 @@ public class RequestData {
                         arrayOfStockData.add(trailingPE);
                     }
                     try {
-                        forwardPE = driver.findElement(By.xpath("//*[@id=\"quote-leaf-comp\"]/div/section/div[2]/div[1]/div[1]/div/table/tbody/tr[4]/td[2]")).getText();
+                        forwardPE = driver.findElement(By.xpath("//*[@id=\"Col1-0-KeyStatistics-Proxy\"]/section/div[2]/div[1]/div[1]/div/table/tbody/tr[4]/td[2]")).getText();
                         arrayOfStockData.add(forwardPE);
                         System.out.println(forwardPE);
                     } catch (org.openqa.selenium.NoSuchElementException | StaleElementReferenceException e) {
@@ -120,7 +121,7 @@ public class RequestData {
                         arrayOfStockData.add(forwardPE);
                     }
                     try {
-                        pEG = driver.findElement(By.xpath("//*[@id=\"quote-leaf-comp\"]/div/section/div[2]/div[1]/div[1]/div/table/tbody/tr[5]/td[2]")).getText();
+                        pEG = driver.findElement(By.xpath("//*[@id=\"Col1-0-KeyStatistics-Proxy\"]/section/div[2]/div[1]/div[1]/div/table/tbody/tr[5]/td[2]")).getText();
                         arrayOfStockData.add(pEG);
                         System.out.println(pEG);
                     } catch (org.openqa.selenium.NoSuchElementException | StaleElementReferenceException e) {
@@ -130,7 +131,7 @@ public class RequestData {
                         arrayOfStockData.add(pEG);
                     }
                     try {
-                        priceBook = driver.findElement(By.xpath("//*[@id=\"quote-leaf-comp\"]/div/section/div[2]/div[1]/div[1]/div/table/tbody/tr[7]/td[2]")).getText();
+                        priceBook = driver.findElement(By.xpath("//*[@id=\"Col1-0-KeyStatistics-Proxy\"]/section/div[2]/div[1]/div[1]/div/table/tbody/tr[7]/td[2]")).getText();
                         arrayOfStockData.add(priceBook);
                         System.out.println(priceBook);
                     } catch (org.openqa.selenium.NoSuchElementException | StaleElementReferenceException e) {
@@ -140,7 +141,7 @@ public class RequestData {
                         arrayOfStockData.add(priceBook);
                     }
                     try {
-                        ePS = driver.findElement(By.xpath("//*[@id=\"quote-leaf-comp\"]/div/section/div[2]/div[1]/div[2]/div[4]/table/tbody/tr[7]/td[2]")).getText();
+                        ePS = driver.findElement(By.xpath("//*[@id=\"Col1-0-KeyStatistics-Proxy\"]/section/div[2]/div[1]/div[2]/div[4]/table/tbody/tr[7]/td[2]")).getText();
                         arrayOfStockData.add(ePS);
                         System.out.println(ePS);
                     } catch (org.openqa.selenium.NoSuchElementException | StaleElementReferenceException e) {
@@ -150,7 +151,7 @@ public class RequestData {
                         arrayOfStockData.add(ePS);
                     }
                     try {
-                        debtToEquity = driver.findElement(By.xpath("//*[@id=\"quote-leaf-comp\"]/div/section/div[2]/div[1]/div[2]/div[5]/table/tbody/tr[4]/td[2]")).getText();
+                        debtToEquity = driver.findElement(By.xpath("//*[@id=\"Col1-0-KeyStatistics-Proxy\"]/section/div[2]/div[1]/div[2]/div[5]/table/tbody/tr[4]/td[2]")).getText();
                         arrayOfStockData.add(debtToEquity);
                         System.out.println(debtToEquity);
                     } catch (org.openqa.selenium.NoSuchElementException | StaleElementReferenceException e) {
@@ -160,7 +161,7 @@ public class RequestData {
                         arrayOfStockData.add(debtToEquity);
                     }
                     try {
-                        rOE = driver.findElement(By.xpath("//*[@id=\"quote-leaf-comp\"]/div/section/div[2]/div[1]/div[2]/div[3]/table/tbody/tr[2]/td[2]")).getText();
+                        rOE = driver.findElement(By.xpath("//*[@id=\"Col1-0-KeyStatistics-Proxy\"]/section/div[2]/div[1]/div[2]/div[3]/table/tbody/tr[2]/td[2]")).getText();
                         arrayOfStockData.add(rOE);
                         System.out.println(rOE);
                     } catch (org.openqa.selenium.NoSuchElementException | StaleElementReferenceException e) {
@@ -170,7 +171,7 @@ public class RequestData {
                         arrayOfStockData.add(rOE);
                     }
                     try {
-                        rOA = driver.findElement(By.xpath("//*[@id=\"quote-leaf-comp\"]/div/section/div[2]/div[1]/div[2]/div[3]/table/tbody/tr[1]/td[2]")).getText();
+                        rOA = driver.findElement(By.xpath("//*[@id=\"Col1-0-KeyStatistics-Proxy\"]/section/div[2]/div[1]/div[2]/div[3]/table/tbody/tr[1]/td[2]")).getText();
                         arrayOfStockData.add(rOA);
                         System.out.println(rOA);
                     } catch (org.openqa.selenium.NoSuchElementException | StaleElementReferenceException e) {
@@ -180,7 +181,7 @@ public class RequestData {
                         arrayOfStockData.add(rOA);
                     }
                     try {
-                        operatingCashFlow = driver.findElement(By.xpath("//*[@id=\"quote-leaf-comp\"]/div/section/div[2]/div[1]/div[2]/div[6]/table/tbody/tr[1]/td[2]")).getText();
+                        operatingCashFlow = driver.findElement(By.xpath("//*[@id=\"Col1-0-KeyStatistics-Proxy\"]/section/div[2]/div[1]/div[2]/div[6]/table/tbody/tr[1]/td[2]")).getText();
                         arrayOfStockData.add(operatingCashFlow);
                         System.out.println(operatingCashFlow);
                     } catch (org.openqa.selenium.NoSuchElementException | StaleElementReferenceException e) {
@@ -190,7 +191,7 @@ public class RequestData {
                         arrayOfStockData.add(operatingCashFlow);
                     }
                     try {
-                        leveredCashFlow = driver.findElement(By.xpath("//*[@id=\"quote-leaf-comp\"]/div/section/div[2]/div[1]/div[2]/div[6]/table/tbody/tr[2]/td[2]")).getText();
+                        leveredCashFlow = driver.findElement(By.xpath("//*[@id=\"Col1-0-KeyStatistics-Proxy\"]/section/div[2]/div[1]/div[2]/div[6]/table/tbody/tr[2]/td[2]")).getText();
                         arrayOfStockData.add(leveredCashFlow);
                         System.out.println(leveredCashFlow);
                     } catch (org.openqa.selenium.NoSuchElementException | StaleElementReferenceException e) {
@@ -200,7 +201,7 @@ public class RequestData {
                         arrayOfStockData.add(leveredCashFlow);
                     }
                     try {
-                        averageVolumeTenDays = driver.findElement(By.xpath("//*[@id=\"quote-leaf-comp\"]/div/section/div[2]/div[2]/div/div[2]/table/tbody/tr[2]/td[2]")).getText();
+                        averageVolumeTenDays = driver.findElement(By.xpath("//*[@id=\"Col1-0-KeyStatistics-Proxy\"]/section/div[2]/div[2]/div/div[2]/table/tbody/tr[2]/td[2]")).getText();
                         arrayOfStockData.add(averageVolumeTenDays);
                         System.out.println(averageVolumeTenDays);
                     } catch (org.openqa.selenium.NoSuchElementException | StaleElementReferenceException e) {
@@ -229,7 +230,7 @@ public class RequestData {
                     debtToEquity = "Not Found";
                     rOE = "Not Found";
                     rOA = "Not Found";
-                    operatingCashFlow = "Not Found";
+                    operatingCashFlow = "  Not Found";
                     leveredCashFlow = "Not Found";
                     averageVolumeTenDays = "Not Found";
                 }
@@ -257,7 +258,7 @@ public class RequestData {
                         arrayOfStockData.add(companyName);
                     }
                     try {
-                        sector = driver.findElement(By.xpath("//*[@id=\"quote-leaf-comp\"]/div/div[1]/div/div/p[2]/strong[1]")).getText();
+                        sector = driver.findElement(By.xpath("//*[@id=\"Col1-0-Profile-Proxy\"]/section/div[1]/div/div/p[2]/strong[1]")).getText();
                         arrayOfStockData.add(sector);
                         System.out.println(sector);
                     } catch (org.openqa.selenium.NoSuchElementException | StaleElementReferenceException e) {
@@ -267,7 +268,7 @@ public class RequestData {
                         arrayOfStockData.add(sector);
                     }
                     try {
-                        industry = driver.findElement(By.xpath("//*[@id=\"quote-leaf-comp\"]/div/div[1]/div/div/p[2]/strong[2]")).getText();
+                        industry = driver.findElement(By.xpath("//*[@id=\"Col1-0-Profile-Proxy\"]/section/div[1]/div/div/p[2]/strong[2]")).getText();
                         arrayOfStockData.add(industry);
                         System.out.println(industry);
                     } catch (org.openqa.selenium.NoSuchElementException | StaleElementReferenceException e) {
@@ -277,7 +278,7 @@ public class RequestData {
                         arrayOfStockData.add(industry);
                     }
                     counter = 2;
-                    throw new UnreachableBrowserException("test");
+                    //throw new UnreachableBrowserException("test");
                 } catch (UnreachableBrowserException e) {
                     System.out.println("CAUGHT IT 2 with counter " + counter);
                     DesiredCapabilities caps = new DesiredCapabilities();
@@ -292,10 +293,10 @@ public class RequestData {
                 }
             arrayOfArrayOfStockData.add(new ArrayList(arrayOfStockData));
             arrayOfStockData.clear();
-            driver.quit();
+
         }
         return arrayOfArrayOfStockData;
-    }
+        }
 }
 
 
