@@ -30,15 +30,7 @@ public class Main {
         ReadFile myFile = new ReadFile();
         stockTickerArray = myFile.ReadFile("C:/Users/McGuirePC/workspace/StockTickerParser/StockTickerSpreadsheet.xlsx");
 
-        /*
-        DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setJavascriptEnabled(false);
-        caps.setBrowserName("htmlunit");
-        WebDriver driver = new HtmlUnitDriver(caps);
-        */
-
         RequestData yahooDataArray = new RequestData();
-        //arrayOfArrayOfStockData = yahooDataArray.getYahooFinanceData(stockTickerArray, driver);
         arrayOfArrayOfStockData = yahooDataArray.getYahooFinanceData(stockTickerArray);
 
         InsertDatabase insertDataToDatabase = new InsertDatabase();

@@ -41,7 +41,6 @@ public class RequestData {
     String leveredCashFlow = null;
     String averageVolumeTenDays;
 
-    //public ArrayList<ArrayList<String>> getYahooFinanceData(ArrayList<String> stockTickerArray, WebDriver driver) {
     public ArrayList<ArrayList<String>> getYahooFinanceData(ArrayList<String> stockTickerArray) {
         //this.driver = driver;
         this.stockTickerArray = stockTickerArray;
@@ -71,7 +70,6 @@ public class RequestData {
                     System.out.println(arrayOfStockData);
                     try {
                         stockPrice = driver.findElement(By.xpath("//*[@id=\"quote-header-info\"]/div[3]/div[1]/div/span[1]")).getText();
-                                                                  //*[@id="quote-header-info"]/div[3]/div[1]/div/span[1]
                         arrayOfStockData.add(stockPrice);
                         System.out.println(stockPrice);
                     } catch (org.openqa.selenium.NoSuchElementException | StaleElementReferenceException e) {
