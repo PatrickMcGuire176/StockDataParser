@@ -3,19 +3,15 @@ package com.company;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.phantomjs.PhantomJSDriver;
-import org.openqa.selenium.phantomjs.PhantomJSDriverService;
+
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.UnreachableBrowserException;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.concurrent.ThreadLocalRandom;
 
-/**
- * Created by McGuirePC on 6/20/2017.
- */
 public class RequestData {
     WebDriver driver;
 
@@ -45,20 +41,26 @@ public class RequestData {
     String leveredCashFlow = null;
     String averageVolumeTenDays;
 
-    String phantomJSPath = "C:/Users/McGuirePC/Downloads/phantomjs-2.1.1-windows/phantomjs-2.1.1-windows/bin/phantomjs.exe";
-
-    public ArrayList<ArrayList<String>> getYahooFinanceData(ArrayList<String> stockTickerArray, WebDriver driver) {
-        this.driver = driver;
+    //public ArrayList<ArrayList<String>> getYahooFinanceData(ArrayList<String> stockTickerArray, WebDriver driver) {
+    public ArrayList<ArrayList<String>> getYahooFinanceData(ArrayList<String> stockTickerArray) {
+        //this.driver = driver;
         this.stockTickerArray = stockTickerArray;
         int counter = 0;
+        DesiredCapabilities caps = new DesiredCapabilities();
+        caps.setJavascriptEnabled(false);
+        caps.setBrowserName("htmlunit");
+        driver = new HtmlUnitDriver(caps);
+
         for (Object stockTicker : stockTickerArray) {
             counter = 0;
+
             int randomNum = ThreadLocalRandom.current().nextInt(1, 4 + 1);
             try {
                 Thread.sleep(randomNum * 1000);
             } catch (InterruptedException e) {
                 System.out.println(e);
             }
+
             while (counter < 2)
                 try {
                     driver.get("https://finance.yahoo.com/quote/" + stockTicker + "/key-statistics?p=" + stockTicker);
@@ -66,9 +68,10 @@ public class RequestData {
 
                     stockSymbol = stockTicker.toString();
                     arrayOfStockData.add(stockSymbol);
-                    System.out.println(stockSymbol);
+                    System.out.println(arrayOfStockData);
                     try {
                         stockPrice = driver.findElement(By.xpath("//*[@id=\"quote-header-info\"]/div[3]/div[1]/div/span[1]")).getText();
+                                                                  //*[@id="quote-header-info"]/div[3]/div[1]/div/span[1]
                         arrayOfStockData.add(stockPrice);
                         System.out.println(stockPrice);
                     } catch (org.openqa.selenium.NoSuchElementException | StaleElementReferenceException e) {
@@ -79,7 +82,6 @@ public class RequestData {
                         // System.out.println(driver.getPageSource());
                     }
                     try {
-                        //revenue = driver.findElement(By.xpath("//*[@id=\"Col1-0-KeyStatistics-Proxy\"]/section/div[2]/div[1]/div[2]/div[4]/table/tbody/tr[1]/td[2]")).getText();
                         revenue = driver.findElement(By.xpath("//*[@id=\"Col1-0-KeyStatistics-Proxy\"]/section/div[2]/div[1]/div[2]/div[4]/table/tbody/tr[1]/td[2]")).getText();
                         arrayOfStockData.add(revenue);
                         System.out.println("Revenue is " + revenue);
@@ -213,11 +215,6 @@ public class RequestData {
                     counter = 2;
                 } catch (UnreachableBrowserException e) {
                     System.out.println("CAUGHT IT 1 with counter " + counter);
-                    DesiredCapabilities caps = new DesiredCapabilities();
-                    caps.setJavascriptEnabled(true);
-                    caps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, phantomJSPath);
-                    driver.close();
-                    driver = new PhantomJSDriver(caps);
                     counter++;
                     stockPrice = "Not Found";
                     revenue = "Not Found";
@@ -235,12 +232,14 @@ public class RequestData {
                     averageVolumeTenDays = "Not Found";
                 }
             counter = 0;
+
             randomNum = ThreadLocalRandom.current().nextInt(1, 4 + 1);
             try {
                 Thread.sleep(randomNum * 1000);
             } catch (InterruptedException e) {
                 System.out.println(e);
             }
+
             while (counter < 2)
                 try {
                     System.out.println("Attempting get 2");
@@ -281,22 +280,27 @@ public class RequestData {
                     //throw new UnreachableBrowserException("test");
                 } catch (UnreachableBrowserException e) {
                     System.out.println("CAUGHT IT 2 with counter " + counter);
-                    DesiredCapabilities caps = new DesiredCapabilities();
-                    caps.setJavascriptEnabled(true);
-                    caps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, phantomJSPath);
-                    driver.quit();
-                    driver = new PhantomJSDriver(caps);
                     companyName = "Not Found";
                     sector = "Not Found";
                     industry = "Not Found";
                     counter++;
                 }
+            System.out.println(arrayOfStockData);
+            System.out.println(arrayOfArrayOfStockData);
+
             arrayOfArrayOfStockData.add(new ArrayList(arrayOfStockData));
             arrayOfStockData.clear();
 
+            driver.manage().deleteAllCookies();
+            try {
+                driver.quit();
+                driver = new HtmlUnitDriver(caps);
+            } catch (UnreachableBrowserException e) {
+                e.printStackTrace();
+            }
         }
         return arrayOfArrayOfStockData;
-        }
+    }
 }
 
 

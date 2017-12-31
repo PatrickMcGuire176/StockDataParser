@@ -6,10 +6,18 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
+import com.gargoylesoftware.htmlunit.WebClient;
+import com.gargoylesoftware.htmlunit.html.DomCharacterData;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.phantomjs.PhantomJSDriver;
-import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
+
+//import org.openqa.selenium.phantomjs.PhantomJSDriver;
+//import org.openqa.selenium.phantomjs.PhantomJSDriverService;
+//import org.openqa.selenium.chrome.ChromeDriver;
+//import org.openqa.selenium.chrome.ChromeDriverService;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+
+
 
 
 public class Main {
@@ -22,18 +30,16 @@ public class Main {
         ReadFile myFile = new ReadFile();
         stockTickerArray = myFile.ReadFile("C:/Users/McGuirePC/workspace/StockTickerParser/StockTickerSpreadsheet.xlsx");
 
-        Random myRandomizer = new Random();
-        String[] browserList = {"chrome", "firefox", "internet explorer"};
-        String phantomJSPath = "C:/Users/McGuirePC/Downloads/phantomjs-2.1.1-windows/phantomjs-2.1.1-windows/bin/phantomjs.exe";
+        /*
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setJavascriptEnabled(false);
-        caps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, phantomJSPath);
-        caps.setBrowserName(browserList[myRandomizer.nextInt(browserList.length)]);
-        WebDriver driver = new PhantomJSDriver(caps);
+        caps.setBrowserName("htmlunit");
+        WebDriver driver = new HtmlUnitDriver(caps);
+        */
 
         RequestData yahooDataArray = new RequestData();
-        arrayOfArrayOfStockData = yahooDataArray.getYahooFinanceData(stockTickerArray, driver);
-
+        //arrayOfArrayOfStockData = yahooDataArray.getYahooFinanceData(stockTickerArray, driver);
+        arrayOfArrayOfStockData = yahooDataArray.getYahooFinanceData(stockTickerArray);
 
         InsertDatabase insertDataToDatabase = new InsertDatabase();
         insertDataToDatabase.insertToDatabase(arrayOfArrayOfStockData);
